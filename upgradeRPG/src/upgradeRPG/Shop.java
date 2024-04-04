@@ -29,33 +29,41 @@ public class Shop {
 		System.out.println("[0] 뒤로가기");
 		System.out.println("==================");
 	}
-	
+
 	private void printWeapon() {
 		System.out.println("======= 무기 =======");
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).kind == Item.WEAPON) {
-				System.out.println(String.format("%d번) [%s] [공격력:+%d↑] [가격:%d]", i+1, list.get(i).name, list.get(i).effect, list.get(i).price));
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).kind == Item.WEAPON) {
+				System.out.println(String.format("%d번) [%s] [공격력 +%d↑] [가격:%d]", i + 1, list.get(i).name,
+						list.get(i).effect, list.get(i).price));
 			}
 		}
-		System.out.println();
+	}
+
+	private void buyWeapon(int select) {
+		if (select == 1 || select == 2 || select == 3)
+			UnitPlayer.inven.inputItem(list.get(select - 1));
+		else
+			return;
 	}
 
 	private void runMenu(int select) {
-//		if (select == Item.WEAPON)
-//			buyWeapon();
+		if (select == Item.WEAPON) {
+			printWeapon();
+			buyWeapon(inputNumber("선택"));
+		}
 //		else if (select == Item.ARMOR)
 //			buyArmor();
 //		else if (select == Item.RING)
 //			buyRing();
-//		else if(select == 0)
-//			return;
+		else if (select == 0)
+			return;
 	}
 
 	public void runShop() {
 		while (true) {
 			printMenu();
-			int select = inputNumber("선택");
-			runMenu(select);
+			runMenu(inputNumber("선택"));
 		}
 	}
 
