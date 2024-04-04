@@ -17,7 +17,7 @@ public class StageLobby extends Stage {
 	    	GameManager.nextStage = "VILLAGE";
 	    else if(select == 2)
 	    	GameManager.nextStage = "BATTLE";
-	    else if(select == 3)
+	    else if(select == 0)
 	    	GameManager.nextStage = "";
 	    
 	    return false;
