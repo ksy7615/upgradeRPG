@@ -68,7 +68,7 @@ public class Shop {
 	}
 
 	private int inputNumber(String message) {
-		int number = scanner.nextInt();
+		int number = -1;
 
 		try {
 			System.out.print(message + " : ");
