@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Shop {
 	private Scanner scanner = new Scanner(System.in);
 	private ArrayList<Item> list = new ArrayList<>();
+	private boolean isRun = true;
 
 	public Shop() {
 		list.add(new Item(Item.WEAPON, "단검", 5, 1000));
