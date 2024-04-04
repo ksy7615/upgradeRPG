@@ -50,6 +50,17 @@ public class Shop {
 		} else
 			return;
 	}
+	
+	private void printArmor() {
+		System.out.println("======= 갑옷 =======");
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).kind == Item.ARMOR) {
+				System.out.println(String.format("%d번) [%s] [방어력 +%d↑] [가격:%d]", i + 1, list.get(i).name,
+						list.get(i).effect, list.get(i).price));
+			}
+		}
+		System.out.println("==================");
+	}
 
 	private void runMenu(int select) {
 		if (select == Item.WEAPON) {
