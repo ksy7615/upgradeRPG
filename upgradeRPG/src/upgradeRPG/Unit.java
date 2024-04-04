@@ -38,5 +38,13 @@ public class Unit {
 		this.exp = exp;
 		this.party = party;
 	}
+	
+	// 몬스터용
+	public Unit(String name, int hp, int power) {
+		this.name = name;
+		this.maxHp = hp;
+		this.hp = maxHp;
+		this.power = power;
+	}
 
 }
