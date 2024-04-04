@@ -58,11 +58,11 @@ public class Shop {
 //		else if (select == Item.RING)
 //			buyRing();
 		else if (select == 0)
-			return;
+			isRun = false;
 	}
 
 	public void runShop() {
-		while (true) {
+		while (isRun) {
 			printMenu();
 			runMenu(inputNumber("선택"));
 		}
