@@ -106,12 +106,10 @@ public class Shop {
 		} else if (select == Item.ARMOR) {
 			printArmor();
 			buyArmor(inputNumber("선택"));
-		}
-		else if (select == Item.RING) {
+		} else if (select == Item.RING) {
 			printRing();
 			buyRing(inputNumber("선택"));
-		}
-		else if (select == 0)
+		} else if (select == 0)
 			isRun = false;
 	}
 
