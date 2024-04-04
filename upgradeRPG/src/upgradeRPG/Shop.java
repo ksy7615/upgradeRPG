@@ -39,6 +39,7 @@ public class Shop {
 						list.get(i).effect, list.get(i).price));
 			}
 		}
+		System.out.println("else) 뒤로가기");
 		System.out.println("==================");
 	}
 
@@ -61,6 +62,7 @@ public class Shop {
 						list.get(i).effect, list.get(i).price));
 			}
 		}
+		System.out.println("else) 뒤로가기");
 		System.out.println("==================");
 	}
 
@@ -83,6 +85,7 @@ public class Shop {
 						list.get(i).effect, list.get(i).price));
 			}
 		}
+		System.out.println("else) 뒤로가기");
 		System.out.println("==================");
 	}
 	
