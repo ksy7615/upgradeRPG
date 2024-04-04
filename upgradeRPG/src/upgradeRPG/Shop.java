@@ -77,11 +77,11 @@ public class Shop {
 	}
 	
 	private void printRing() {
-		System.out.println("======= 갑옷 =======");
+		System.out.println("======= 반지 =======");
 		int count = 0;
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).kind == Item.RING) {
-				System.out.println(String.format("%d번) [%s] [공격력 +%d↑] [가격:%d]", ++count, list.get(i).name,
+				System.out.println(String.format("%d번) [%s] [체력 +%d↑] [가격:%d]", ++count, list.get(i).name,
 						list.get(i).effect, list.get(i).price));
 			}
 		}
