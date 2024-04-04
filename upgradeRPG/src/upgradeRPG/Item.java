@@ -9,4 +9,11 @@ public class Item {
 	private String name; // 템명
 	private int effect; // 효과
 	private int price; // 가격
+	
+	public Item(int kind, String name, int effect, int price) {
+		this.kind = kind;
+		this.name = name;
+		this.effect = effect;
+		this.price = price;
+	}
 }
