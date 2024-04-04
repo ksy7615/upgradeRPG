@@ -1,5 +1,7 @@
 package upgradeRPG;
 
-public class Inventory {
+import java.util.ArrayList;
 
+public class Inventory {
+	ArrayList<Item> item = new ArrayList<>();
 }
