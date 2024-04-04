@@ -21,13 +21,20 @@ public class Shop {
 		list.add(new Item(Item.RING, "골드링", 35, 30000));
 	}
 
-	public void printMenu() {
+	private void printMenu() {
 		System.out.println("======= 상점 =======");
 		System.out.println("[1] 무기");
 		System.out.println("[2] 갑옷");
 		System.out.println("[3] 반지");
 		System.out.println("[0] 뒤로가기");
 		System.out.println("======= 상점 =======");
+	}
+	
+	public void runShop() {
+		while(true) {
+			printMenu();
+			int select = inputNumber("선택");
+		}
 	}
 	
 	private int inputNumber(String message) {
