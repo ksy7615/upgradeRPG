@@ -47,4 +47,80 @@ public class Unit {
 		this.power = power;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
+	public int getLevel() {
+		return this.level;
+	}
+
+	public int getMaxHp() {
+		return this.maxHp;
+	}
+
+	public int getHp() {
+		return this.hp;
+	}
+
+	public int getMaxMp() {
+		return this.maxMp;
+	}
+
+	public int getMp() {
+		return this.mp;
+	}
+
+	public int getPower() {
+		return this.power;
+	}
+
+	public int getDefence() {
+		return this.defence;
+	}
+
+	public int getExp() {
+		return this.exp;
+	}
+
+	public boolean isParty() {
+		return this.party;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public void setMaxMp(int maxMp) {
+		this.maxMp = maxMp;
+	}
+
+	public void setMp(int mp) {
+		this.mp = mp;
+	}
+
+	public void setPower(int power) {
+		this.power = power;
+	}
+
+	public void setDefence(int defence) {
+		this.defence = defence;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public void setParty() {
+		this.party = !party;
+	}
+
 }
