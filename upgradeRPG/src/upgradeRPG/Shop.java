@@ -27,17 +27,28 @@ public class Shop {
 		System.out.println("[2] 갑옷");
 		System.out.println("[3] 반지");
 		System.out.println("[0] 뒤로가기");
-		System.out.println("======= 상점 =======");
+		System.out.println("==================");
+	}
+	
+	private void printWeapon() {
+		System.out.println("======= 무기 =======");
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).kind == Item.WEAPON) {
+				System.out.println(String.format("%d번) [%s] [공격력:+%d↑] [가격:%d]", i+1, list.get(i).name, list.get(i).effect, list.get(i).price));
+			}
+		}
+		System.out.println();
 	}
 
 	private void runMenu(int select) {
-		if (select == Item.WEAPON) {
-
-		} else if (select == Item.ARMOR) {
-
-		} else if (select == Item.RING) {
-
-		}
+//		if (select == Item.WEAPON)
+//			buyWeapon();
+//		else if (select == Item.ARMOR)
+//			buyArmor();
+//		else if (select == Item.RING)
+//			buyRing();
+//		else if(select == 0)
+//			return;
 	}
 
 	public void runShop() {
