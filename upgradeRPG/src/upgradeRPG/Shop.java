@@ -85,6 +85,16 @@ public class Shop {
 		}
 		System.out.println("==================");
 	}
+	
+	private void buyRing(int select) {
+		if (select < 1 || select > 3) {
+			return;
+		}
+
+		UnitPlayer.inven.inputItem(list.get(list.size() - 3 + select - 1));
+		UnitPlayer.money -= list.get(list.size() - 3 + select - 1).price;
+		System.out.println(list.get(list.size() - 3 + select - 1).name + "을(를) 구입했습니다.");
+	}
 
 	private void runMenu(int select) {
 		if (select == Item.WEAPON) {
@@ -96,7 +106,7 @@ public class Shop {
 		}
 		else if (select == Item.RING) {
 			printRing();
-//			buyRing();
+			buyRing(inputNumber("선택"));
 		}
 		else if (select == 0)
 			isRun = false;
