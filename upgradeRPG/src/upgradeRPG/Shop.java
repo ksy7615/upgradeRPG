@@ -39,6 +39,7 @@ public class Shop {
 						list.get(i).effect, list.get(i).price));
 			}
 		}
+		System.out.println("==================");
 	}
 
 	private void buyWeapon(int select) {
