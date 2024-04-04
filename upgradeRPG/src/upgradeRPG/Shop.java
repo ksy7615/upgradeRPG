@@ -1,5 +1,10 @@
 package upgradeRPG;
 
-public class Shop {
+import java.util.ArrayList;
 
+public class Shop {
+	private ArrayList<Item> list = new ArrayList<>();
+	
+	
+	
 }
