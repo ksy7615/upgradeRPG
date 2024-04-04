@@ -1,8 +1,10 @@
 package upgradeRPG;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Shop {
+	private Scanner scanner = new Scanner(System.in);
 	private ArrayList<Item> list = new ArrayList<>();
 
 	public Shop() {
@@ -26,6 +28,19 @@ public class Shop {
 		System.out.println("[3] 반지");
 		System.out.println("[0] 뒤로가기");
 		System.out.println("======= 상점 =======");
+	}
+	
+	private int inputNumber(String message) {
+		int number = scanner.nextInt();
+		
+		try {
+			System.out.print(message + " : ");
+			String input = scanner.next();
+			number = Integer.parseInt(input);
+		} catch (Exception e) {
+			System.err.println("숫자만 입력하세요.");
+		}
+		return number;
 	}
 
 }
