@@ -43,12 +43,12 @@ public class Shop {
 	}
 
 	private void buyWeapon(int select) {
-		if (select == 1 || select == 2 || select == 3) {
-			UnitPlayer.inven.inputItem(list.get(select - 1));
-			UnitPlayer.money -= list.get(select - 1).price;
-			System.out.println(list.get(select - 1).name + "을(를) 구입했습니다.");
-		} else
+		if (select < 1 || select > 3) {
 			return;
+		}
+		UnitPlayer.inven.inputItem(list.get(select - 1));
+		UnitPlayer.money -= list.get(select - 1).price;
+		System.out.println(list.get(select - 1).name + "을(를) 구입했습니다.");
 	}
 
 	private void printArmor() {
@@ -69,7 +69,6 @@ public class Shop {
 			buyWeapon(inputNumber("선택"));
 		} else if (select == Item.ARMOR) {
 			printArmor();
-//			buyArmor();
 		}
 //		else if (select == Item.RING)
 //			buyRing();
