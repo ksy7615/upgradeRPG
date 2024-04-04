@@ -29,17 +29,28 @@ public class Shop {
 		System.out.println("[0] 뒤로가기");
 		System.out.println("======= 상점 =======");
 	}
-	
-	public void runShop() {
-		while(true) {
-			printMenu();
-			int select = inputNumber("선택");
+
+	private void runMenu(int select) {
+		if (select == Item.WEAPON) {
+
+		} else if (select == Item.ARMOR) {
+
+		} else if (select == Item.RING) {
+
 		}
 	}
-	
+
+	public void runShop() {
+		while (true) {
+			printMenu();
+			int select = inputNumber("선택");
+			runMenu(select);
+		}
+	}
+
 	private int inputNumber(String message) {
 		int number = scanner.nextInt();
-		
+
 		try {
 			System.out.print(message + " : ");
 			String input = scanner.next();
