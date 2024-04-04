@@ -73,6 +73,18 @@ public class Shop {
 		UnitPlayer.money -= list.get(list.size() - 6 + select - 1).price;
 		System.out.println(list.get(list.size() - 6 + select - 1).name + "을(를) 구입했습니다.");
 	}
+	
+	private void printRing() {
+		System.out.println("======= 갑옷 =======");
+		int count = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).kind == Item.RING) {
+				System.out.println(String.format("%d번) [%s] [공격력 +%d↑] [가격:%d]", ++count, list.get(i).name,
+						list.get(i).effect, list.get(i).price));
+			}
+		}
+		System.out.println("==================");
+	}
 
 	private void runMenu(int select) {
 		if (select == Item.WEAPON) {
@@ -82,8 +94,10 @@ public class Shop {
 			printArmor();
 			buyArmor(inputNumber("선택"));
 		}
-//		else if (select == Item.RING)
+		else if (select == Item.RING) {
+			printRing();
 //			buyRing();
+		}
 		else if (select == 0)
 			isRun = false;
 	}
