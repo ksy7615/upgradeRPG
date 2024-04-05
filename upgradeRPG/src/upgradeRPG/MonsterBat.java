@@ -7,15 +7,16 @@ public class MonsterBat extends UnitMonster {
 	}
 
 	@Override
-	public void defaultAttack(UnitPlayer player) {
+	public void defaultAttack(Unit unit) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void skill(UnitPlayer player) {
+	public void skill(Unit unit) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
