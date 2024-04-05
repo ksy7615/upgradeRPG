@@ -9,6 +9,10 @@ public abstract class UnitPlayer extends Unit {
 		money = 1000;
 		guild.setGuild();
 	}
+	
+	public UnitPlayer() {
+		
+	}
 
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
 		super(name, level, hp, mp, power, defence, exp);
