@@ -48,6 +48,8 @@ public abstract class Unit {
 	
 	public abstract void defaultAttack(Unit unit);
 	
+	public abstract void defaultAttack(UnitPlayer player);
+	
 	public abstract void skill(Unit unit);
 
 }
