@@ -1,6 +1,9 @@
 package upgradeRPG;
 
+import java.util.Random;
+
 public class UnitPlayer extends Unit {
+	private Random random = new Random();
 	private int level;
 	private int maxMp;
 	private int mp;
@@ -12,29 +15,29 @@ public class UnitPlayer extends Unit {
 	public static int money;
 	public static Inventory inven = new Inventory();
 	public static Guild guild = new Guild();
-	
+
 	public UnitPlayer() {
-		
+
 	}
-	
+
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
 		super(name, hp, power);
-		
+
 		this.level = level;
 		this.defence = defence;
 		this.exp = exp;
 		this.party = false;
 	}
-	
+
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp, boolean party) {
 		super(name, hp, power);
-		
+
 		this.level = level;
 		this.defence = defence;
 		this.exp = exp;
 		this.party = party;
 	}
-	
+
 	public int getLevel() {
 		return this.level;
 	}
@@ -89,13 +92,19 @@ public class UnitPlayer extends Unit {
 	}
 
 	@Override
-	public void defaultAttack(Unit unit) {
+	public void defaultAttack(Unit monster) {
+		System.out.println(String.format("[%s]의 기본 공격\n", this.getName()));
 		
+		monster.setHp(monster.getHp() - this.getPower());
+
+		if (monster.getHp() <= 0) {
+			monster.setHp(0);
+		}
 	}
 
 	@Override
 	public void skill(Unit unit) {
-		
+
 	}
 
 }
