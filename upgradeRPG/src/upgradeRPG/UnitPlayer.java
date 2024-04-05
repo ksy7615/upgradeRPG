@@ -11,7 +11,7 @@ public abstract class UnitPlayer extends Unit {
 	}
 	
 	public UnitPlayer() {
-		
+		super();
 	}
 
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
@@ -22,8 +22,4 @@ public abstract class UnitPlayer extends Unit {
 		super(name, level, hp, mp, power, defence, exp, false);
 	}
 	
-	public abstract void defaultAttack(UnitMonster monster);
-	
-	public abstract void skill(UnitMonster monster);
-
 }
