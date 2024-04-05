@@ -11,6 +11,7 @@ public class StageLobby extends Stage {
 		System.out.println("         [0] 종료        ");
 	    System.out.println("╚══════════════════════╝");
 	    
+	    System.out.print("☞ ");
 	    int select = GameManager.scanner.nextInt();
 	    
 	    if(select == 1)
