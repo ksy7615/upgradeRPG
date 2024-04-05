@@ -9,9 +9,9 @@ public class UnitManager {
 	public static ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private String path = "upgradeRPG.";
 	private String[] monsters = { "MonsterBat", "MonsterGoblin", "MonsterOrc", "MonsterSlime", "MonsterWolf" };
-
+	
 	private UnitManager() {
-
+		
 	}
 
 	private static UnitManager instance = new UnitManager();
@@ -20,6 +20,19 @@ public class UnitManager {
 		return instance;
 	}
 	
-	
+	public void setMonster(int size) {
+		for (int i = 0; i < size; i++) {
+			int num = random.nextInt(monsters.length);
+			try {
+				Class<?> clazz = Class.forName(path + monsters[num]);
+				Object obj = clazz.getDeclaredConstructor().newInstance();
+
+				UnitMonster temp = (UnitMonster) obj;
+				monsterList.add(temp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
