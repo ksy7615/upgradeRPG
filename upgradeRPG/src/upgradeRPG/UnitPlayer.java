@@ -1,6 +1,6 @@
 package upgradeRPG;
 
-public abstract class UnitPlayer extends Unit {
+public class UnitPlayer extends Unit {
 	private int level;
 	private int maxMp;
 	private int mp;
@@ -87,7 +87,15 @@ public abstract class UnitPlayer extends Unit {
 		money = 1000;
 		guild.setGuild();
 	}
-	
 
+	@Override
+	public void defaultAttack(Unit unit) {
+		
+	}
+
+	@Override
+	public void skill(Unit unit) {
+		
+	}
 
 }
