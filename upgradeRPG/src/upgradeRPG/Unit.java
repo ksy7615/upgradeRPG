@@ -1,6 +1,6 @@
 package upgradeRPG;
 
-public class Unit {
+public abstract class Unit {
 	private String name;
 	private int level;
 	
