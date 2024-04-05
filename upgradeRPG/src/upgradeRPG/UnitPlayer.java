@@ -1,9 +1,6 @@
 package upgradeRPG;
 
-import java.util.Random;
-
 public class UnitPlayer extends Unit {
-	private Random random = new Random();
 	private int level;
 	private int maxMp;
 	private int mp;
