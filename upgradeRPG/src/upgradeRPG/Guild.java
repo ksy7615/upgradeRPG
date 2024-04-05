@@ -10,6 +10,7 @@ public class Guild {
 	public static final int PARTY_SIZE = 4;
 	private ArrayList<UnitPlayer> guildList = new ArrayList<>();
 	private UnitPlayer[] partyList;
+	private boolean isRun = true;
 
 	public void setGuild() {
 		PlayerWarrior warrior = new PlayerWarrior();
@@ -48,11 +49,26 @@ public class Guild {
 		System.out.println("╚══════════════════════╝");
 	}
 	
+	private void runGuildMenu(int select) {
+		if(select == 1) {}
+//			printGuildList();
+//		else if(select == 2)
+//			AddGuildMember();
+//		else if(select == 3)
+//			deleteGuildMember();
+//		else if(select == 4)
+//			changePartyMember();
+//		else if(select == 5)
+//			sortGuildList();
+//		else if(select == 0)
+//			isRun = false;
+	}
+	
 	public void runGuild() {
-		while(true) {
-//			printGuildMenu();
+		while(isRun) {
+			printGuildMenu();
 			int select = inputNumber("☞");
-//			runGuildMenu(select);
+			runGuildMenu(select);
 		}
 	}
 	
