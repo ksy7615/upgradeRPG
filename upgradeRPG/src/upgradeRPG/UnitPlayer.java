@@ -1,7 +1,6 @@
 package upgradeRPG;
 
 public abstract class UnitPlayer extends Unit {
-
 	private int level;
 	private int maxMp;
 	private int mp;
@@ -34,6 +33,54 @@ public abstract class UnitPlayer extends Unit {
 		this.defence = defence;
 		this.exp = exp;
 		this.party = party;
+	}
+	
+	public int getLevel() {
+		return this.level;
+	}
+
+	public int getMaxMp() {
+		return this.maxMp;
+	}
+
+	public int getMp() {
+		return this.mp;
+	}
+
+	public int getDefence() {
+		return this.defence;
+	}
+
+	public int getExp() {
+		return this.exp;
+	}
+
+	public boolean isParty() {
+		return this.party;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setMaxMp(int maxMp) {
+		this.maxMp = maxMp;
+	}
+
+	public void setMp(int mp) {
+		this.mp = mp;
+	}
+
+	public void setDefence(int defence) {
+		this.defence = defence;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public void setParty() {
+		this.party = !party;
 	}
 
 	public void init() {
