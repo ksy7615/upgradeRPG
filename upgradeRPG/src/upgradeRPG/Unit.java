@@ -15,6 +15,10 @@ public class Unit {
 	
 	private boolean party;
 	
+	public Unit() {
+		
+	}
+	
 	// 플레이어용
 	public Unit(String name, int level, int hp, int mp, int power, int defence, int exp) {
 		this.name = name;
