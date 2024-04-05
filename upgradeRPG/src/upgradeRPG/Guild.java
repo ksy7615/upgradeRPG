@@ -36,11 +36,19 @@ public class Guild {
 		}
 	}
 	
+	public void runGuild() {
+		while(true) {
+//			printGuildMenu();
+			int select = inputNumber("☞");
+//			runGuildMenu(select);
+		}
+	}
+	
 	private int inputNumber(String message) {
 		int number = -1;
 		
 		try {
-			System.out.println(message + " : ");
+			System.out.print(message + " ");
 			String input = scanner.next();
 			number = Integer.parseInt(input);
 		} catch (Exception e) {
