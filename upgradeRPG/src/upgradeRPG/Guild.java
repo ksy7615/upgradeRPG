@@ -2,8 +2,10 @@ package upgradeRPG;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Guild {
+	private Scanner scanner = new Scanner(System.in);
 	private Random random = new Random();
 	public static final int PARTY_SIZE = 4;
 	private ArrayList<UnitPlayer> guildList = new ArrayList<>();
@@ -32,5 +34,18 @@ public class Guild {
 				partyList[index++] = guildList.get(i);
 			}
 		}
+	}
+	
+	private int inputNumber(String message) {
+		int number = -1;
+		
+		try {
+			System.out.println(message + " : ");
+			String input = scanner.next();
+			number = Integer.parseInt(input);
+		} catch (Exception e) {
+			System.err.println("숫자를 입력하세요.");
+		}
+		return number;
 	}
 }
