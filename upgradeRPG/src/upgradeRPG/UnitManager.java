@@ -9,6 +9,7 @@ public class UnitManager {
 	public static ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private String path = "upgradeRPG.";
 	private String[] monsters = { "MonsterBat", "MonsterGoblin", "MonsterOrc", "MonsterSlime", "MonsterWolf" };
+	private UnitPlayer player = new UnitPlayer();
 	
 	private UnitManager() {
 		
@@ -18,6 +19,10 @@ public class UnitManager {
 
 	public static UnitManager getInstance() {
 		return instance;
+	}
+	
+	public void playerInit() {
+		player.init();
 	}
 	
 	public void setMonster(int size) {
