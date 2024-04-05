@@ -9,7 +9,7 @@ public class UnitManager {
 	public static ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private String path = "upgradeRPG.";
 	private String[] monsters = { "MonsterBat", "MonsterGoblin", "MonsterOrc", "MonsterSlime", "MonsterWolf" };
-	private UnitPlayer player = new UnitPlayer();
+	public UnitPlayer player = new UnitPlayer();
 	
 	private UnitManager() {
 		
