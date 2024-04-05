@@ -1,6 +1,8 @@
 package upgradeRPG;
 
 public class StageVillage extends Stage {
+	private UnitManager unitManager = UnitManager.getInstance();
+	private Shop shop;
 
 	@Override
 	public boolean update() {
@@ -14,10 +16,11 @@ public class StageVillage extends Stage {
 		System.out.println("        [0] 뒤로가기       ");
 		System.out.println("╚══════════════════════╝");
 
+		System.out.print("☞ ");
 		int select = GameManager.scanner.nextInt();
 
 		if (select == 1) {
-
+			
 		} else if (select == 2) {
 
 		} else if (select == 3) {
