@@ -49,9 +49,25 @@ public class Guild {
 		System.out.println("╚══════════════════════╝");
 	}
 	
+	private void printGuildList() {
+		System.out.println("╔══════════길드원 목록══════════╗");
+		for(int i=0; i<guildList.size(); i++) {
+			System.out.println(String.format("  %d) 직업 : %s", i+1,guildList.get(i).getName()));
+			System.out.println(String.format("  🎮 Lv : %d", guildList.get(i).getLevel()));
+			System.out.println(String.format("  🌟 Exp : %d", guildList.get(i).getExp()));
+			System.out.println(String.format("  ❤️ HP : [%d/%d]", guildList.get(i).getHp(), guildList.get(i).getMaxHp()));
+			System.out.println(String.format("  💧 MP : [%d/%d]", guildList.get(i).getMp(), guildList.get(i).getMaxMp()));
+			System.out.println(String.format("  💪 Power : %d", guildList.get(i).getPower()));
+			System.out.println(String.format("  🛡️ Defence : %d", guildList.get(i).getDefence()));
+			if(i < guildList.size() - 1)
+				System.out.println(" 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰");
+		}
+		System.out.println("╚═══════════════════════════╝");
+	}
+	
 	private void runGuildMenu(int select) {
-		if(select == 1) {}
-//			printGuildList();
+		if(select == 1)
+			printGuildList();
 //		else if(select == 2)
 //			AddGuildMember();
 //		else if(select == 3)
@@ -60,8 +76,8 @@ public class Guild {
 //			changePartyMember();
 //		else if(select == 5)
 //			sortGuildList();
-//		else if(select == 0)
-//			isRun = false;
+		else if(select == 0)
+			isRun = false;
 	}
 	
 	public void runGuild() {
