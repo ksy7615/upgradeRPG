@@ -20,6 +20,8 @@ public class UnitPlayer extends Unit {
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
 		super(name, hp, power);
 
+		this.maxMp = mp;
+		this.mp = maxMp;
 		this.level = level;
 		this.defence = defence;
 		this.exp = exp;
@@ -29,6 +31,8 @@ public class UnitPlayer extends Unit {
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp, boolean party) {
 		super(name, hp, power);
 
+		this.maxMp = mp;
+		this.mp = maxMp;
 		this.level = level;
 		this.defence = defence;
 		this.exp = exp;
