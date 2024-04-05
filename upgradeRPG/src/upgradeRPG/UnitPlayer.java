@@ -22,6 +22,15 @@ public abstract class UnitPlayer extends Unit {
 		this.exp = exp;
 		this.party = false;
 	}
+	
+	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp, boolean party) {
+		super(name, hp, power);
+		
+		this.level = level;
+		this.defence = defence;
+		this.exp = exp;
+		this.party = party;
+	}
 
 	public void init() {
 		money = 1000;
