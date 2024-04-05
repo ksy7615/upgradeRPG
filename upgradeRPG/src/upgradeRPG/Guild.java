@@ -36,6 +36,18 @@ public class Guild {
 		}
 	}
 	
+	private void printGuildMenu() {
+		System.out.println("╔══════════════════════╗");
+		System.out.println("          Guild        ");
+		System.out.println("       [1] 길드원 목록     ");
+		System.out.println("       [2] 길드원 추가     ");
+		System.out.println("       [3] 길드원 삭제     ");
+		System.out.println("       [4] 파티원 교체     ");
+		System.out.println("       [5] 정렬          ");
+		System.out.println("       [0] 뒤로가기        ");
+		System.out.println("╚══════════════════════╝");
+	}
+	
 	public void runGuild() {
 		while(true) {
 //			printGuildMenu();
