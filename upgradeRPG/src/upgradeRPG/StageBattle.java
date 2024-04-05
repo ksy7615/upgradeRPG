@@ -9,6 +9,12 @@ public class StageBattle extends Stage {
 	private ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private UnitManager unitManager = UnitManager.getInstance();
 
+	public StageBattle() {
+		unitManager.setMonster(5);
+		playerList = unitManager.playerList;
+		monsterList = unitManager.monsterList;
+	}
+	
 	@Override
 	public boolean update() {
 		// TODO Auto-generated method stub
