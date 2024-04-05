@@ -101,7 +101,12 @@ public class UnitPlayer extends Unit {
 
 	@Override
 	public void skill(Unit unit) {
+		// 스킬 각자 다르게 부여
+	}
 
+	@Override
+	public void defaultAttack(UnitPlayer player) {
+		// 몬스터용이라 공백
 	}
 
 }
