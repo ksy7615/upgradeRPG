@@ -150,18 +150,36 @@ public class Guild {
 		}
 
 		guildList.get(index).setParty();
-		
+
 		// 파티 재설정
 		int n = 0;
-	    for (int i = 0; i < guildList.size(); i++) {
-	      if(guildList.get(i).isParty()) {
-	        partyList[n] = guildList.get(i);
-	        n += 1;
-	      }
-	    }
-		
+		for (int i = 0; i < guildList.size(); i++) {
+			if (guildList.get(i).isParty()) {
+				partyList[n] = guildList.get(i);
+				n += 1;
+			}
+		}
+
 		System.out.println(String.format("파티원이 %s(Lv.%d)에서 %s(Lv.%d)로 바뀌었습니다.", target.getName(), target.getLevel(),
 				guildList.get(index).getName(), guildList.get(index).getLevel()));
+	}
+
+	private void sortGuildList() {
+		for (int i = 0; i < guildList.size(); i++) {
+			UnitPlayer temp = guildList.get(i);
+
+			int index = i;
+			for (int j = i; j < guildList.size(); j++) {
+				if (temp.getLevel() < guildList.get(j).getLevel()) {
+					temp = guildList.get(j);
+					index = j;
+				}
+			}
+			UnitPlayer player = guildList.get(index);
+			guildList.set(index, guildList.get(i));
+			guildList.set(i, player);
+		}
+		printGuildList();
 	}
 
 	private void runGuildMenu(int select) {
@@ -171,10 +189,10 @@ public class Guild {
 			addGuildMember();
 		else if (select == 3)
 			deleteGuildMember();
-		else if(select == 4)
+		else if (select == 4)
 			changePartyMember();
-//		else if(select == 5)
-//			sortGuildList();
+		else if(select == 5)
+			sortGuildList();
 		else if (select == 0)
 			isRun = false;
 	}
