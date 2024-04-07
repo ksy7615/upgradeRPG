@@ -94,33 +94,51 @@ public class Guild {
 		guildList.add(player);
 		System.out.println("  👤  '" + player.getName() + "' \u001B[92m영입에 성공했습니다 !\u001B[0m");
 	}
-	
+
 	private UnitPlayer getGuildPlayer(int index) {
 		return guildList.get(index);
 	}
-	
+
 	private void deleteGuildMember() {
 		printGuildList();
 		System.out.print("추방할 길드원 👉 ");
 		int index = GameManager.scanner.nextInt() - 1;
-		
+
 		UnitPlayer target = getGuildPlayer(index);
-		
-		if(target.isParty()) {
+
+		if (target.isParty()) {
 			System.err.println("파티 중인 길드원은 추방할 수 없습니다.");
 			return;
 		}
-		
+
 		guildList.remove(target);
 		System.out.println(String.format("%s 길드원을 추방시켰습니다.", target.getName()));
+	}
+
+	private void printPartyMember() {
+		System.out.println("╔══════════파티원 목록══════════╗");
+		for (int i = 0; i < PARTY_SIZE; i++) {
+			System.out.println(String.format("  %d) 직업 : %s", i + 1, partyList[i].getName()));
+			System.out.println(String.format("  🎮 Lv : %d", partyList[i].getLevel()));
+			System.out.println(String.format("  🌟 Exp : %d", partyList[i].getExp()));
+			System.out
+					.println(String.format("  ❤️ HP : [%d/%d]", partyList[i].getHp(), partyList[i].getMaxHp()));
+			System.out
+					.println(String.format("  💧 MP : [%d/%d]", partyList[i].getMp(), partyList[i].getMaxMp()));
+			System.out.println(String.format("  💪 Power : %d", partyList[i].getPower()));
+			System.out.println(String.format("  🛡️ Defence : %d", partyList[i].getDefence()));
+			if (i < partyList.length - 1)
+				System.out.println(" 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰");
+		}
+		System.out.println("╚═══════════════════════════╝");
 	}
 
 	private void runGuildMenu(int select) {
 		if (select == 1)
 			printGuildList();
-		else if(select == 2)
+		else if (select == 2)
 			addGuildMember();
-		else if(select == 3)
+		else if (select == 3)
 			deleteGuildMember();
 //		else if(select == 4)
 //			changePartyMember();
