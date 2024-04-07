@@ -98,14 +98,30 @@ public class Guild {
 	private UnitPlayer getGuildPlayer(int index) {
 		return guildList.get(index);
 	}
+	
+	private void deleteGuildMember() {
+		printGuildList();
+		System.out.print("추방할 길드원 👉 ");
+		int index = GameManager.scanner.nextInt() - 1;
+		
+		UnitPlayer target = getGuildPlayer(index);
+		
+		if(target.isParty()) {
+			System.err.println("파티 중인 길드원은 추방할 수 없습니다.");
+			return;
+		}
+		
+		guildList.remove(target);
+		System.out.println(String.format("%s 길드원을 추방시켰습니다.", target.getName()));
+	}
 
 	private void runGuildMenu(int select) {
 		if (select == 1)
 			printGuildList();
 		else if(select == 2)
 			addGuildMember();
-//		else if(select == 3)
-//			deleteGuildMember();
+		else if(select == 3)
+			deleteGuildMember();
 //		else if(select == 4)
 //			changePartyMember();
 //		else if(select == 5)
