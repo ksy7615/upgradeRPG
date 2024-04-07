@@ -121,16 +121,47 @@ public class Guild {
 			System.out.println(String.format("  %d) 직업 : %s", i + 1, partyList[i].getName()));
 			System.out.println(String.format("  🎮 Lv : %d", partyList[i].getLevel()));
 			System.out.println(String.format("  🌟 Exp : %d", partyList[i].getExp()));
-			System.out
-					.println(String.format("  ❤️ HP : [%d/%d]", partyList[i].getHp(), partyList[i].getMaxHp()));
-			System.out
-					.println(String.format("  💧 MP : [%d/%d]", partyList[i].getMp(), partyList[i].getMaxMp()));
+			System.out.println(String.format("  ❤️ HP : [%d/%d]", partyList[i].getHp(), partyList[i].getMaxHp()));
+			System.out.println(String.format("  💧 MP : [%d/%d]", partyList[i].getMp(), partyList[i].getMaxMp()));
 			System.out.println(String.format("  💪 Power : %d", partyList[i].getPower()));
 			System.out.println(String.format("  🛡️ Defence : %d", partyList[i].getDefence()));
 			if (i < partyList.length - 1)
 				System.out.println(" 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰");
 		}
 		System.out.println("╚═══════════════════════════╝");
+	}
+
+	private void changePartyMember() {
+		printPartyMember();
+
+		System.out.println("교체할 파티원 👉 ");
+		int targetIndex = GameManager.scanner.nextInt() - 1;
+
+		UnitPlayer target = partyList[targetIndex];
+		target.setParty();
+
+		printGuildList();
+		System.out.println("파티에 참여시킬 길드원 👉 ");
+		int index = GameManager.scanner.nextInt() - 1;
+
+		if (guildList.get(index).isParty()) {
+			System.err.println("이미 파티에 참여중인 길드원입니다.");
+			return;
+		}
+
+		guildList.get(index).setParty();
+		
+		// 파티 재설정
+		int n = 0;
+	    for (int i = 0; i < guildList.size(); i++) {
+	      if(guildList.get(i).isParty()) {
+	        partyList[n] = guildList.get(i);
+	        n += 1;
+	      }
+	    }
+		
+		System.out.println(String.format("파티원이 %s(Lv.%d)에서 %s(Lv.%d)로 바뀌었습니다.", target.getName(), target.getLevel(),
+				guildList.get(index).getName(), guildList.get(index).getLevel()));
 	}
 
 	private void runGuildMenu(int select) {
@@ -140,8 +171,8 @@ public class Guild {
 			addGuildMember();
 		else if (select == 3)
 			deleteGuildMember();
-//		else if(select == 4)
-//			changePartyMember();
+		else if(select == 4)
+			changePartyMember();
 //		else if(select == 5)
 //			sortGuildList();
 		else if (select == 0)
