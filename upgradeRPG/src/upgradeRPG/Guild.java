@@ -1,12 +1,10 @@
 package upgradeRPG;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Guild {
 	private Scanner scanner = new Scanner(System.in);
-	private Random random = new Random();
 	public static final int PARTY_SIZE = 4;
 	private ArrayList<UnitPlayer> guildList = new ArrayList<>();
 	private UnitPlayer[] partyList;
