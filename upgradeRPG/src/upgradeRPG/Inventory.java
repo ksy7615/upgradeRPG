@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Inventory {
 	public static ArrayList<Item> itemList = new ArrayList<>();
+	private boolean isRun = true;
 
 	public void inputItem(Item item) {
 		itemList.add(item);
@@ -20,6 +21,14 @@ public class Inventory {
 	private int inputNumber(String message) {
 		System.out.println(message + " : ");
 		return GameManager.scanner.nextInt();
+	}
+	
+	public void runInventory() {
+		while(isRun) {
+			printInventoryMenu();
+			int select = inputNumber("선택");
+//			runInventoryMenu(select);
+		}
 	}
 
 }
