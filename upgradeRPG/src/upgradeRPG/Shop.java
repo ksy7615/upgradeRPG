@@ -32,6 +32,7 @@ public class Shop {
 	}
 
 	private void printWeapon() {
+		System.out.println(String.format("💰소지금💰 %d💲", UnitPlayer.money));
 		System.out.println("======= 무기 =======");
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).kind == Item.WEAPON) {
@@ -59,6 +60,7 @@ public class Shop {
 	}
 
 	private void printArmor() {
+		System.out.println(String.format("💰소지금💰 %d💲", UnitPlayer.money));
 		System.out.println("======= 갑옷 =======");
 		int count = 0;
 		for (int i = 0; i < list.size(); i++) {
@@ -87,6 +89,7 @@ public class Shop {
 	}
 
 	private void printRing() {
+		System.out.println(String.format("💰소지금💰 %d💲", UnitPlayer.money));
 		System.out.println("======= 반지 =======");
 		int count = 0;
 		for (int i = 0; i < list.size(); i++) {
