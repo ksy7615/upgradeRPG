@@ -35,7 +35,7 @@ public class Guild {
 		}
 	}
 
-	private void printGuildMenu() {
+	public void printGuildMenu() {
 		System.out.println("╔══════════════════════╗");
 		System.out.println("          Guild        ");
 		System.out.println("       [1] 길드원 목록     ");
