@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 public class Inventory {
 	public static ArrayList<Item> itemList = new ArrayList<>();
-	
+
+	public void inputItem(Item item) {
+		itemList.add(item);
+	}
+
 	public void printInventoryMenu() {
 		System.out.println("======= 인벤토리 =======");
 		System.out.println("[1] 장비착용");
@@ -13,7 +17,9 @@ public class Inventory {
 		System.out.println("=====================");
 	}
 	
-	public void inputItem(Item item) {
-		itemList.add(item);
+	private int inputNumber(String message) {
+		System.out.println(message + " : ");
+		return GameManager.scanner.nextInt();
 	}
+
 }
