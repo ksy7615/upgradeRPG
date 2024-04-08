@@ -204,6 +204,11 @@ public class Guild {
 			runGuildMenu(select);
 		}
 	}
+	
+	// 인벤토리에서 쓸 용도
+	public void printPlayerStat(int index) {
+		guildList.get(index).playerStat();
+	}
 
 	private int inputNumber(String message) {
 		int number = -1;
