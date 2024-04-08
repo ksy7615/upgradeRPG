@@ -91,6 +91,10 @@ public class UnitPlayer extends Unit {
 		money = 1000;
 		guild.setGuild();
 	}
+	
+	public void guildMenu() {
+		guild.printGuildMenu();
+	}
 
 	@Override
 	public void defaultAttack(Unit monster) {
