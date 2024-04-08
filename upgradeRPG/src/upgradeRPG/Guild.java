@@ -209,6 +209,10 @@ public class Guild {
 	public void printPlayerStat(int index) {
 		guildList.get(index).playerStat();
 	}
+	
+	public void printPlayerItem(int index) {
+		guildList.get(index).playerItem();
+	}
 
 	private int inputNumber(String message) {
 		int number = -1;
