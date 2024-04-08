@@ -31,18 +31,18 @@ public class StageBattle extends Stage {
 					.println(String.format("❤️ HP [%d/%d]", monsterList.get(i).getHp(), monsterList.get(i).getMaxHp()));
 		}
 	}
-	
+
 	private void attackForPlayer(int index) {
 		UnitPlayer player = playerList.get(index);
-		
+
 		if (player.getHp() == 0) {
 			return;
 		}
-		
+
 		System.out.println(String.format("[%s] [1]기본공격 [2]스킬", player.getName()));
 		int select = GameManager.scanner.nextInt();
-		
-		if (select == 1)
+
+		if (select == 1) {
 			while (true) {
 				int idx = random.nextInt(monsterList.size());
 
@@ -51,16 +51,25 @@ public class StageBattle extends Stage {
 					break;
 				}
 			}
-		
-		else if (select == 2)
+		}
+
+		else if (select == 2) {
 			while (true) {
 				int idx = random.nextInt(monsterList.size());
 
 				if (monsterList.get(idx).getHp() > 0) {
-					player.skill(monsterList.get(idx));
-					break;
+					if (!player.getName().equals("힐러")) {
+						player.skill(monsterList.get(idx));
+						break;
+						// 힐러는 스킬 대상이 다르므로
+					} else {
+						for (int i = 0; i < playerList.size(); i++) {
+							player.skill(playerList.get(i));
+						}
+					}
 				}
 			}
+		}
 	}
 
 	@Override
