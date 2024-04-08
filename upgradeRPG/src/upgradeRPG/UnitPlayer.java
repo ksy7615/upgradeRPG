@@ -120,8 +120,14 @@ public class UnitPlayer extends Unit {
 			System.out.println(String.format("  🛡️ Defence : %d", this.getDefence() + armor.effect));
 		else
 			System.out.println(String.format("  🛡️ Defence : %d", this.getDefence()));
-		
+
 		System.out.println(String.format("  👥 Party : %s", this.isParty() ? "O" : "X"));
+	}
+
+	public void playerItem() {
+		System.out.println(String.format("  ⚔ 무기 : %s", this.weapon == null ? "없음" : this.weapon.name));
+		System.out.println(String.format("  🪖 방어구 : %s", this.armor == null ? "없음" : this.armor.name));
+		System.out.println(String.format("  💍 반지 : %s", this.ring == null ? "없음" : this.ring.name));
 	}
 
 	@Override
