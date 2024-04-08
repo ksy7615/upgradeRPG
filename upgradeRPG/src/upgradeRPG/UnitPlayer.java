@@ -12,13 +12,13 @@ public class UnitPlayer extends Unit {
 	public static int money;
 	public static Inventory inven = new Inventory();
 	public static Guild guild = new Guild();
-	
+
 	private Item weapon;
 	private Item armor;
 	private Item ring;
 
 	public UnitPlayer() {
-		
+
 	}
 
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
@@ -95,15 +95,39 @@ public class UnitPlayer extends Unit {
 		money = 1000;
 		guild.setGuild();
 	}
-	
+
 	public void guildMenu() {
 		guild.printGuildMenu();
+	}
+
+	public void playerStat() {
+		System.out.println(String.format("[Lv.%d] 직업 '%s'", this.getLevel(), this.getName()));
+
+		if (ring != null)
+			System.out.println(
+					String.format("  ❤️ HP : [%d/%d]", this.getHp() + ring.effect, this.getMaxHp() + ring.effect));
+		else
+			System.out.println(String.format("  ❤️ HP : [%d/%d]", this.getHp(), this.getMaxHp()));
+
+		System.out.println(String.format("  💧 MP : [%d/%d]", this.getMp(), this.getMaxMp()));
+
+		if (weapon != null)
+			System.out.println(String.format("  💪 Power : %d", this.getPower() + weapon.effect));
+		else
+			System.out.println(String.format("  💪 Power : %d", this.getPower()));
+
+		if (armor != null)
+			System.out.println(String.format("  🛡️ Defence : %d", this.getDefence() + armor.effect));
+		else
+			System.out.println(String.format("  🛡️ Defence : %d", this.getDefence()));
+		
+		System.out.println(String.format("  👥 Party : %s", this.isParty() ? "O" : "X"));
 	}
 
 	@Override
 	public void defaultAttack(Unit monster) {
 		System.out.println(String.format("[%s]의 기본 공격\n", this.getName()));
-		
+
 		monster.setHp(monster.getHp() - this.getPower());
 
 		if (monster.getHp() <= 0) {
