@@ -6,17 +6,4 @@ public class MonsterBat extends UnitMonster {
 		super("박쥐", 500, 50);
 	}
 
-	@Override
-	public void defaultAttack(Unit unit) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void skill(Unit unit) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
