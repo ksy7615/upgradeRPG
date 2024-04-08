@@ -12,9 +12,13 @@ public class UnitPlayer extends Unit {
 	public static int money;
 	public static Inventory inven = new Inventory();
 	public static Guild guild = new Guild();
+	
+	private Item weapon;
+	private Item armor;
+	private Item ring;
 
 	public UnitPlayer() {
-
+		
 	}
 
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp) {
