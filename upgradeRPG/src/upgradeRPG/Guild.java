@@ -94,7 +94,7 @@ public class Guild {
 		System.out.println("  👤  '" + player.getName() + "' \u001B[92m영입에 성공했습니다 !\u001B[0m");
 	}
 
-	private UnitPlayer getGuildPlayer(int index) {
+	public UnitPlayer getGuildPlayer(int index) {
 		return guildList.get(index);
 	}
 
