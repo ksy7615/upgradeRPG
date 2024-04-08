@@ -30,7 +30,7 @@ public class UnitPlayer extends Unit {
 		this.defence = defence;
 		this.exp = exp;
 		this.party = false;
-		
+
 		this.weapon = null;
 		this.armor = null;
 		this.ring = null;
@@ -45,7 +45,7 @@ public class UnitPlayer extends Unit {
 		this.defence = defence;
 		this.exp = exp;
 		this.party = party;
-		
+
 		this.weapon = null;
 		this.armor = null;
 		this.ring = null;
@@ -151,7 +151,31 @@ public class UnitPlayer extends Unit {
 
 	@Override
 	public void skill(Unit unit) {
-		// 스킬 각자 다르게 부여
+		if (unit instanceof PlayerWarrior) {
+			for(int i=0; i<guild.partyList.length; i++) {
+				if(guild.partyList[i].getName().equals("전사")) {
+					guild.partyList[i].skill(unit);
+				}
+			}
+		} else if (unit instanceof PlayerTanker) {
+			for(int i=0; i<guild.partyList.length; i++) {
+				if(guild.partyList[i].getName().equals("탱커")) {
+					guild.partyList[i].skill(unit);
+				}
+			}
+		} else if (unit instanceof PlayerWizard) {
+			for(int i=0; i<guild.partyList.length; i++) {
+				if(guild.partyList[i].getName().equals("마법사")) {
+					guild.partyList[i].skill(unit);
+				}
+			}
+		} else if (unit instanceof PlayerHealer) {
+			for(int i=0; i<guild.partyList.length; i++) {
+				if(guild.partyList[i].getName().equals("힐러")) {
+					guild.partyList[i].skill(unit);
+				}
+			}
+		}
 	}
 
 	@Override
