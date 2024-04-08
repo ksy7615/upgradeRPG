@@ -59,6 +59,7 @@ public class Guild {
 					.println(String.format("  💧 MP : [%d/%d]", guildList.get(i).getMp(), guildList.get(i).getMaxMp()));
 			System.out.println(String.format("  💪 Power : %d", guildList.get(i).getPower()));
 			System.out.println(String.format("  🛡️ Defence : %d", guildList.get(i).getDefence()));
+			System.out.println(String.format("  👥 Party : %s", guildList.get(i).isParty() ? "O" : "X"));
 			if (i < guildList.size() - 1)
 				System.out.println(" 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰");
 		}
@@ -123,6 +124,7 @@ public class Guild {
 			System.out.println(String.format("  💧 MP : [%d/%d]", partyList[i].getMp(), partyList[i].getMaxMp()));
 			System.out.println(String.format("  💪 Power : %d", partyList[i].getPower()));
 			System.out.println(String.format("  🛡️ Defence : %d", partyList[i].getDefence()));
+			System.out.println(String.format("  👥 Party : %s", partyList[i].isParty() ? "O" : "X"));
 			if (i < partyList.length - 1)
 				System.out.println(" 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰");
 		}
