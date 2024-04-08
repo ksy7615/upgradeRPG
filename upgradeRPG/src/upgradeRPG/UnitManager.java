@@ -8,12 +8,11 @@ public class UnitManager {
 	public static ArrayList<UnitPlayer> playerList = new ArrayList<>();
 	public static ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private String path = "upgradeRPG.";
-	private String[] players = { "PlayerWarrior", "PlayerTanker", "PlayerWizard", "PlayerHealer" };
 	private String[] monsters = { "MonsterBat", "MonsterGoblin", "MonsterOrc", "MonsterSlime", "MonsterWolf" };
 	public UnitPlayer player = new UnitPlayer();
 
 	private UnitManager() {
-
+		playerInit();
 	}
 
 	private static UnitManager instance = new UnitManager();
@@ -24,6 +23,15 @@ public class UnitManager {
 
 	public void playerInit() {
 		player.init();
+		PlayerWarrior warrior = new PlayerWarrior();
+		PlayerTanker tanker = new PlayerTanker();
+		PlayerWizard wizard = new PlayerWizard();
+		PlayerHealer healer = new PlayerHealer();
+
+		playerList.add(warrior);
+		playerList.add(tanker);
+		playerList.add(wizard);
+		playerList.add(healer);
 	}
 
 	public void setMonster(int size) {
