@@ -18,6 +18,19 @@ public class Inventory {
 		System.out.println("=====================");
 	}
 	
+	private void wearEquipment() {
+		
+	}
+	
+	public void runInventoryMenu(int select) {
+		if(select == 1)
+			wearEquipment();
+//		else if(select == 2)
+//			sellItem();
+//		else if(select == 3)
+			isRun = false;
+	}
+	
 	private int inputNumber(String message) {
 		System.out.println(message + " : ");
 		return GameManager.scanner.nextInt();
@@ -27,7 +40,7 @@ public class Inventory {
 		while(isRun) {
 			printInventoryMenu();
 			int select = inputNumber("선택");
-//			runInventoryMenu(select);
+			runInventoryMenu(select);
 		}
 	}
 
