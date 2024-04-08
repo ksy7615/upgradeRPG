@@ -8,11 +8,12 @@ public class UnitManager {
 	public static ArrayList<UnitPlayer> playerList = new ArrayList<>();
 	public static ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private String path = "upgradeRPG.";
+	private String[] players = { "PlayerWarrior", "PlayerTanker", "PlayerWizard", "PlayerHealer" };
 	private String[] monsters = { "MonsterBat", "MonsterGoblin", "MonsterOrc", "MonsterSlime", "MonsterWolf" };
 	public UnitPlayer player = new UnitPlayer();
-	
+
 	private UnitManager() {
-		
+
 	}
 
 	private static UnitManager instance = new UnitManager();
@@ -20,11 +21,11 @@ public class UnitManager {
 	public static UnitManager getInstance() {
 		return instance;
 	}
-	
+
 	public void playerInit() {
 		player.init();
 	}
-	
+
 	public void setMonster(int size) {
 		for (int i = 0; i < size; i++) {
 			int num = random.nextInt(monsters.length);
