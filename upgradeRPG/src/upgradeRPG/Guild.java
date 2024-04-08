@@ -47,7 +47,7 @@ public class Guild {
 		System.out.println("╚══════════════════════╝");
 	}
 
-	private void printGuildList() {
+	public void printGuildList() {
 		System.out.println("╔══════════길드원 목록══════════╗");
 		for (int i = 0; i < guildList.size(); i++) {
 			System.out.println(String.format("  %d) 직업 : %s", i + 1, guildList.get(i).getName()));
