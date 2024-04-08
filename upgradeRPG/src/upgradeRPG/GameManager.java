@@ -27,4 +27,17 @@ public class GameManager {
 	public static GameManager getInstance() {
 		return instance;
 	}
+	
+	private boolean changeStage() {
+		return false;
+	}
+	
+	public void run() {
+		System.out.println("╔══════════════════════╗");
+		System.out.println("║⚔️✨🛡️ 𝓡𝓟𝓖 𝓖𝓐𝓜𝓔  🛡️✨⚔️║");
+		System.out.println("╚══════════════════════╝");
+		while (true) {
+			changeStage();
+		}
+	}
 }
