@@ -3,8 +3,11 @@ package upgradeRPG;
 public class Main {
 
 	public static void main(String[] args) {
-		GameManager game = new GameManager();
-		game.run();
+		Main.run();
+	}
+
+	public static void run() {
+		GameManager.getInstance().run();
 	}
 
 }
