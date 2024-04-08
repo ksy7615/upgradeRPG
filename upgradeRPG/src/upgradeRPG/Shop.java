@@ -48,6 +48,11 @@ public class Shop {
 			return;
 		}
 
+		if (UnitPlayer.money < list.get(select - 1).price) {
+			System.err.println("가격이 너무 비싸다...");
+			return;
+		}
+
 		UnitPlayer.inven.inputItem(list.get(select - 1));
 		UnitPlayer.money -= list.get(select - 1).price;
 		System.out.println(list.get(select - 1).name + "을(를) 구입했습니다.");
@@ -71,11 +76,16 @@ public class Shop {
 			return;
 		}
 
+		if (UnitPlayer.money < list.get(list.size() - 6 + select - 1).price) {
+			System.err.println("가격이 너무 비싸다...");
+			return;
+		}
+
 		UnitPlayer.inven.inputItem(list.get(list.size() - 6 + select - 1));
 		UnitPlayer.money -= list.get(list.size() - 6 + select - 1).price;
 		System.out.println(list.get(list.size() - 6 + select - 1).name + "을(를) 구입했습니다.");
 	}
-	
+
 	private void printRing() {
 		System.out.println("======= 반지 =======");
 		int count = 0;
@@ -88,9 +98,14 @@ public class Shop {
 		System.out.println("else) 뒤로가기");
 		System.out.println("==================");
 	}
-	
+
 	private void buyRing(int select) {
 		if (select < 1 || select > 3) {
+			return;
+		}
+		
+		if (UnitPlayer.money < list.get(list.size() - 3 + select - 1).price) {
+			System.err.println("가격이 너무 비싸다...");
 			return;
 		}
 
