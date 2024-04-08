@@ -43,21 +43,21 @@ public class Inventory {
 				// 새로운 아이템 부여
 				UnitPlayer.guild.getGuildPlayer(index).weapon = itemList.get(itemIndex);
 			}
-			
+
 			if (itemList.get(itemIndex).kind == Item.ARMOR) {
 				if (UnitPlayer.guild.getGuildPlayer(index).armor != null) {
 					inputItem(UnitPlayer.guild.getGuildPlayer(index).armor);
 				}
 				UnitPlayer.guild.getGuildPlayer(index).armor = itemList.get(itemIndex);
 			}
-			
+
 			if (itemList.get(itemIndex).kind == Item.RING) {
 				if (UnitPlayer.guild.getGuildPlayer(index).ring != null) {
 					inputItem(UnitPlayer.guild.getGuildPlayer(index).ring);
 				}
 				UnitPlayer.guild.getGuildPlayer(index).ring = itemList.get(itemIndex);
 			}
-			
+
 			// 입은 아이템은 아이템창에서 빼줌
 			itemList.remove(itemIndex);
 		}
@@ -84,13 +84,36 @@ public class Inventory {
 		System.out.println("=====================");
 	}
 
+	private void sellItem() {
+		while (true) {
+			System.out.println(String.format("💰소지금💰 %d💲", UnitPlayer.money));
+			printItemList();
+
+			System.out.println("0번) 뒤로가기");
+			int select = inputNumber("판매할 아이템 👉 ");
+
+			if (select == 0)
+				break;
+
+			if (select < 0 || select >= itemList.size()) {
+				System.err.println("유효한 입력 값이 아닙니다.");
+				break;
+			}
+			// 수수료 30% 떼고 판매 가능
+			UnitPlayer.money += itemList.get(select).price * 0.7;
+			System.out.println(String.format("'%s'를 판매하고 %d원을 획득하였습니다.", itemList.get(select).name,
+					itemList.get(select).price * 0.7));
+			itemList.remove(select);
+		}
+	}
+
 	public void runInventoryMenu(int select) {
 		if (select == 1)
 			wearEquipment();
-//		else if(select == 2)
-//			sellItem();
-//		else if(select == 3)
-		isRun = false;
+		else if (select == 2)
+			sellItem();
+		else if (select == 3)
+			isRun = false;
 	}
 
 	private int inputNumber(String message) {
