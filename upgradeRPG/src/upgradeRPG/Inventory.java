@@ -19,7 +19,48 @@ public class Inventory {
 	}
 
 	private void wearEquipment() {
+		UnitPlayer.guild.printGuildList();
 
+		int index = inputNumber("아이템을 장착할 길드원 👉 ") - 1;
+		while (true) {
+			UnitPlayer.guild.printPlayerStat(index);
+			UnitPlayer.guild.printPlayerItem(index);
+
+			printItemList();
+			System.out.println("0번) 뒤로가기");
+			int itemIndex = inputNumber("장착할 아이템 👉 ") - 1;
+
+			if (itemIndex == 0) {
+				break;
+			}
+
+			if (itemList.get(itemIndex).kind == Item.WEAPON) {
+				// 이미 장착하고 있는 게 있으면
+				if (UnitPlayer.guild.getGuildPlayer(index).weapon != null) {
+					// 해당 아이템은 아이템 창에 넣고
+					inputItem(UnitPlayer.guild.getGuildPlayer(index).weapon);
+				}
+				// 새로운 아이템 부여
+				UnitPlayer.guild.getGuildPlayer(index).weapon = itemList.get(itemIndex);
+			}
+			
+			if (itemList.get(itemIndex).kind == Item.ARMOR) {
+				if (UnitPlayer.guild.getGuildPlayer(index).armor != null) {
+					inputItem(UnitPlayer.guild.getGuildPlayer(index).armor);
+				}
+				UnitPlayer.guild.getGuildPlayer(index).armor = itemList.get(itemIndex);
+			}
+			
+			if (itemList.get(itemIndex).kind == Item.RING) {
+				if (UnitPlayer.guild.getGuildPlayer(index).ring != null) {
+					inputItem(UnitPlayer.guild.getGuildPlayer(index).ring);
+				}
+				UnitPlayer.guild.getGuildPlayer(index).ring = itemList.get(itemIndex);
+			}
+			
+			// 입은 아이템은 아이템창에서 빼줌
+			itemList.remove(itemIndex);
+		}
 	}
 
 	private void printItemList() {
@@ -29,13 +70,13 @@ public class Inventory {
 				System.out.println(String.format("%d번) [%s] [공격력 +%d↑] [가격:%d]", i + 1, itemList.get(i).name,
 						itemList.get(i).effect, itemList.get(i).price));
 			}
-			
+
 			if (itemList.get(i).kind == Item.ARMOR) {
 				System.out.println(String.format("%d번) [%s] [방어력 +%d↑] [가격:%d]", i + 1, itemList.get(i).name,
 						itemList.get(i).effect, itemList.get(i).price));
 			}
-			
-			if(itemList.get(i).kind == Item.RING) {
+
+			if (itemList.get(i).kind == Item.RING) {
 				System.out.println(String.format("%d번) [%s] [체력 +%d↑] [가격:%d]", i + 1, itemList.get(i).name,
 						itemList.get(i).effect, itemList.get(i).price));
 			}
