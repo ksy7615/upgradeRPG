@@ -13,9 +13,9 @@ public class UnitPlayer extends Unit {
 	public static Inventory inven = new Inventory();
 	public static Guild guild = new Guild();
 
-	private Item weapon;
-	private Item armor;
-	private Item ring;
+	public Item weapon;
+	public Item armor;
+	public Item ring;
 
 	public UnitPlayer() {
 
