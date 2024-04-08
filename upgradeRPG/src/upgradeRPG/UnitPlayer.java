@@ -30,6 +30,10 @@ public class UnitPlayer extends Unit {
 		this.defence = defence;
 		this.exp = exp;
 		this.party = false;
+		
+		this.weapon = null;
+		this.armor = null;
+		this.ring = null;
 	}
 
 	public UnitPlayer(String name, int level, int hp, int mp, int power, int defence, int exp, boolean party) {
@@ -41,6 +45,10 @@ public class UnitPlayer extends Unit {
 		this.defence = defence;
 		this.exp = exp;
 		this.party = party;
+		
+		this.weapon = null;
+		this.armor = null;
+		this.ring = null;
 	}
 
 	public int getLevel() {
