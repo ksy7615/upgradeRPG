@@ -21,17 +21,36 @@ public class GameManager {
 
 		nextStage = "LOBBY";
 	}
-	
+
 	private static GameManager instance = new GameManager();
-	
+
 	public static GameManager getInstance() {
 		return instance;
 	}
-	
+
 	private boolean changeStage() {
-		return false;
+		if (curStage.equals(nextStage)) {
+			return true;
+		}
+
+		curStage = nextStage;
+		Stage stage = stageList.get(curStage);
+		stage.init();
+
+		boolean isRun = true;
+		while (true) {
+			isRun = stage.update();
+			if (!isRun)
+				break;
+		}
+
+		if (nextStage.equals("")) {
+			return false;
+		} else {
+			return true;
+		}
 	}
-	
+
 	public void run() {
 		System.out.println("╔══════════════════════╗");
 		System.out.println("║⚔️✨🛡️ 𝓡𝓟𝓖 𝓖𝓐𝓜𝓔  🛡️✨⚔️║");
