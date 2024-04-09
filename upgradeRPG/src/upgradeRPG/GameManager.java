@@ -55,8 +55,15 @@ public class GameManager {
 		System.out.println("╔══════════════════════╗");
 		System.out.println("║⚔️✨🛡️ 𝓡𝓟𝓖 𝓖𝓐𝓜𝓔  🛡️✨⚔️║");
 		System.out.println("╚══════════════════════╝");
-		while (true) {
-			changeStage();
-		}
+		boolean run = true;
+	    GameManager.getInstance();
+	    
+	    while (true) {
+	      run = GameManager.instance.changeStage();
+	      if (run == false) {
+	        break;
+	      }
+	    }
+	    System.out.println(" 게임 종료 🔚");
 	}
 }
