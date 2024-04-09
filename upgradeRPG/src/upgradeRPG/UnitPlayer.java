@@ -111,6 +111,10 @@ public class UnitPlayer extends Unit {
 	public int getGuildSize() {
 		return guild.guildList.size();
 	}
+	
+	public static int getItemSize() {
+		return inven.itemList.size();
+	}
 
 	public void playerStat() {
 		System.out.println(String.format("[Lv.%d] 직업 '%s'", this.getLevel(), this.getName()));
