@@ -8,6 +8,9 @@ public class StageBattle extends Stage {
 	private ArrayList<UnitPlayer> playerList = new ArrayList<>();
 	private ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private UnitManager unitManager = UnitManager.getInstance();
+	
+	private int deadPlayer;
+	private int deadMonster;
 
 	public StageBattle() {
 		unitManager.setMonster(5);
