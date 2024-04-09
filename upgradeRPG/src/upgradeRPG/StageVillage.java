@@ -32,11 +32,13 @@ public class StageVillage extends Stage {
 				try {
 					FileData.save();
 				} catch (Exception e) {
+					System.err.println("파일저장 실패");
 				}
 			} else if (select == 5) {
 				try {
 					FileData.loadData();
 				} catch (Exception e) {
+					System.err.println("파일로드 실패");
 				}
 			} else if (select == 0) {
 				GameManager.nextStage = "LOBBY";
