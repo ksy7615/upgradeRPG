@@ -26,6 +26,44 @@ public class StageMimic extends Stage {
 		System.out.println(String.format("❤️ HP [%d/%d]", mimic.getHp(), mimic.getMaxHp()));
 	}
 
+	private void attackForPlayer(int index) {
+		UnitPlayer players = player.get(index);
+
+		if (players.getHp() == 0) {
+			return;
+		}
+		System.out.println(String.format("[%s] [1]기본공격 [2]스킬", players.getName()));
+		System.out.println("👉 ");
+		int select = GameManager.scanner.nextInt();
+
+		if (select == 1) {
+			while (true) {
+
+				if (mimic.getHp() > 0) {
+					players.defaultAttack(mimic);
+					break;
+				}
+			}
+		}
+
+		else if (select == 2) {
+			while (true) {
+				if (mimic.getHp() > 0) {
+					if (!players.getName().equals("힐러")) {
+						players.skill(mimic);
+						break;
+						// 힐러는 스킬 대상이 다르므로
+					} else {
+						for (int i = 0; i < player.size(); i++) {
+							players.skill(player.get(i));
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	@Override
 	public boolean update() {
 		return false;
