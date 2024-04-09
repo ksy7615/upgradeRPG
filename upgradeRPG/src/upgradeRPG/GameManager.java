@@ -64,6 +64,18 @@ public class GameManager {
 	        break;
 	      }
 	    }
-	    System.out.println(" 게임 종료 🔚");
+	    System.out.println("게임 종료 🔚");
+	}
+	
+	public static int inputNumber() {
+		int number = -1;
+
+		try {
+			String input = scanner.nextLine();
+			number = Integer.parseInt(input);
+		} catch (Exception e) {
+			System.err.println("숫자를 입력하세요.");
+		}
+		return number;
 	}
 }
