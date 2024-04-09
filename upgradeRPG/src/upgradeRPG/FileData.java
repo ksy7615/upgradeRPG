@@ -12,22 +12,22 @@ public class FileData {
 	FileWriter fileWriter = null;
 	FileReader fileReader = null;
 	BufferedReader bufferedReader = null;
-	
+
 	String path = "gameData.txt";
-	
+
 	public void save() throws IOException {
 		// (1) 플레이어 유닛 기본 세팅 저장
 		UnitManager unitManager = UnitManager.getInstance();
-	
+
 		fileWriter = new FileWriter(path);
 		ArrayList<UnitPlayer> temp = unitManager.player.guild.guildList;
-		
+
 		String gameData = "";
-	
+
 		gameData += UnitPlayer.money + "\r\n" + temp.size() + "\r\n";
-		
+
 		// 길드원 저장
-		for(int i=0; i<temp.size(); i++) {
+		for (int i = 0; i < temp.size(); i++) {
 			gameData += temp.get(i).getName();
 			gameData += "/";
 			gameData += temp.get(i).getLevel();
@@ -44,9 +44,9 @@ public class FileData {
 			gameData += "/";
 			gameData += temp.get(i).isParty();
 			gameData += "\r\n";
-			
+
 			// 장착하고 있는 아이템 저장
-			if(temp.get(i).weapon == null) {
+			if (temp.get(i).weapon == null) {
 				gameData += temp.get(i).weapon;
 			} else {
 				Item item = temp.get(i).weapon;
@@ -61,7 +61,7 @@ public class FileData {
 				gameData += weaponData;
 			}
 			gameData += "/";
-			if(temp.get(i).armor == null) {
+			if (temp.get(i).armor == null) {
 				gameData += temp.get(i).armor;
 			} else {
 				Item item = temp.get(i).armor;
@@ -76,7 +76,7 @@ public class FileData {
 				gameData += armorData;
 			}
 			gameData += "/";
-			if(temp.get(i).ring == null) {
+			if (temp.get(i).ring == null) {
 				gameData += temp.get(i).ring;
 			} else {
 				Item item = temp.get(i).ring;
@@ -96,6 +96,22 @@ public class FileData {
 		gameData += UnitPlayer.getItemSize();
 		gameData += "\r\n";
 		
+		// 아이템 저장
+		for (int i = 0; i < UnitPlayer.getItemSize(); i++) {
+			Item item = UnitPlayer.inven.itemList.get(i);
+			gameData += item.kind;
+			gameData += ",";
+			gameData += item.name;
+			gameData += ",";
+			gameData += item.effect;
+			gameData += ",";
+			gameData += item.price;
+			gameData += "\r\n";
+		}
+		System.out.println(gameData);
+		
+		fileWriter.write(gameData, 0, gameData.length());
+		fileWriter.close();
 	}
-	
+
 }
