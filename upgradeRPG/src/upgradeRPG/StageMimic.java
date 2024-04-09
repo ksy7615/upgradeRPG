@@ -1,8 +1,10 @@
 package upgradeRPG;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class StageMimic extends Stage {
+	private Random random = new Random();
 	private MonsterMimic mimic = new MonsterMimic();
 	private ArrayList<UnitPlayer> player = StageBattle.playerList;
 
@@ -60,6 +62,21 @@ public class StageMimic extends Stage {
 						}
 					}
 				}
+			}
+		}
+	}
+	
+	private void attackForMonster() {
+		if (mimic.getHp() <= 0) {
+			return;
+		}
+
+		while (true) {
+			int idx = random.nextInt(player.size());
+
+			if (player.get(idx).getHp() > 0) {
+				mimic.defaultAttack(player.get(idx));
+				break;
 			}
 		}
 	}
