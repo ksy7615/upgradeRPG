@@ -13,9 +13,15 @@ public class StageBattle extends Stage {
 	private int deadMonster;
 
 	public StageBattle() {
+		unitManager.monsterList.clear();
 		unitManager.setMonster(5);
+		playerList = null;
 		playerList = unitManager.playerList;
-		monsterList = unitManager.monsterList;
+	    monsterList = null;
+	    monsterList = unitManager.monsterList;
+	    
+	    deadMonster = monsterList.size();
+	    deadPlayer = playerList.size();
 	}
 
 	private void printState() {
@@ -168,10 +174,10 @@ public class StageBattle extends Stage {
 		return false;
 	}
 
+	// 초기화
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-
+	    
 	}
 
 }
