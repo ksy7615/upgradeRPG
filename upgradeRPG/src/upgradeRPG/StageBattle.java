@@ -8,7 +8,7 @@ public class StageBattle extends Stage {
 	private ArrayList<UnitPlayer> playerList = new ArrayList<>();
 	private ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private UnitManager unitManager = UnitManager.getInstance();
-	
+
 	private int deadPlayer;
 	private int deadMonster;
 
@@ -91,6 +91,24 @@ public class StageBattle extends Stage {
 				break;
 			}
 		}
+	}
+
+	private void checkLive() {
+		int num = 0;
+		for (int i = 0; i < playerList.size(); i++) {
+			if (playerList.get(i).getHp() <= 0) {
+				num += 1;
+			}
+		}
+		deadPlayer = playerList.size() - num;
+		
+		num = 0;
+		for(int i=0; i<monsterList.size(); i++) {
+			if(monsterList.get(i).getHp() <= 0) {
+				num += 1;
+			}
+		}
+		deadMonster = monsterList.size() - num;
 	}
 
 	@Override
