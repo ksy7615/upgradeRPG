@@ -107,6 +107,10 @@ public class UnitPlayer extends Unit {
 	public void guildMenu() {
 		guild.printGuildMenu();
 	}
+	
+	public int getGuildSize() {
+		return guild.guildList.size();
+	}
 
 	public void playerStat() {
 		System.out.println(String.format("[Lv.%d] 직업 '%s'", this.getLevel(), this.getName()));
@@ -151,31 +155,7 @@ public class UnitPlayer extends Unit {
 
 	@Override
 	public void skill(Unit unit) {
-		if (unit instanceof PlayerWarrior) {
-			for(int i=0; i<guild.partyList.length; i++) {
-				if(guild.partyList[i].getName().equals("전사")) {
-					guild.partyList[i].skill(unit);
-				}
-			}
-		} else if (unit instanceof PlayerTanker) {
-			for(int i=0; i<guild.partyList.length; i++) {
-				if(guild.partyList[i].getName().equals("탱커")) {
-					guild.partyList[i].skill(unit);
-				}
-			}
-		} else if (unit instanceof PlayerWizard) {
-			for(int i=0; i<guild.partyList.length; i++) {
-				if(guild.partyList[i].getName().equals("마법사")) {
-					guild.partyList[i].skill(unit);
-				}
-			}
-		} else if (unit instanceof PlayerHealer) {
-			for(int i=0; i<guild.partyList.length; i++) {
-				if(guild.partyList[i].getName().equals("힐러")) {
-					guild.partyList[i].skill(unit);
-				}
-			}
-		}
+		
 	}
 
 	@Override
