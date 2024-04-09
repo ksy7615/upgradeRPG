@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileData {
-	File file = null;
-	FileReader fileReader = null;
-	BufferedReader bufferedReader = null;
-
+	
 	public static void save() throws IOException {
 		// (1) 플레이어 유닛 기본 세팅 저장
 		UnitManager unitManager = UnitManager.getInstance();
@@ -111,6 +108,51 @@ public class FileData {
 
 		fileWriter.write(gameData, 0, gameData.length());
 		fileWriter.close();
+	}
+	
+	public void loadData() throws IOException {
+		File file = null;
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		String path = "gameData.txt";
+		
+		file = new File(path);
+		if(file.exists()) {
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
+			
+			// 돈
+			String money = bufferedReader.readLine();
+			UnitPlayer.money = Integer.parseInt(money);
+			System.out.println(UnitPlayer.money);
+			
+			// 길드원 수
+			String guildSize = bufferedReader.readLine();
+			int size = Integer.parseInt(guildSize);
+			UnitPlayer.guild.guildList.clear();
+			System.out.println(size);
+			
+			// 길드원 아이템 가져오기
+			for(int i=0; i<size; i++) {
+				String unitData = bufferedReader.readLine();
+				String[] unitArray = unitData.split("/");
+				String name = unitArray[0];
+				int level = Integer.parseInt(unitArray[1]);
+				int maxHp = Integer.parseInt(unitArray[2]);
+				int maxMp = Integer.parseInt(unitArray[3]);
+				int power = Integer.parseInt(unitArray[4]);
+				int defence = Integer.parseInt(unitArray[5]);
+				int exp = Integer.parseInt(unitArray[6]);
+				boolean isParty = unitArray[7].equals("true");
+				
+				UnitPlayer player = new UnitPlayer(name, level, maxHp, maxMp, power, defence, exp, isParty);
+				UnitPlayer.guild.guildList.add(player);
+			}
+			
+		} else {
+			System.err.println("불러올 파일이 존재하지 않습니다.");
+			return;
+		}
 	}
 
 }
