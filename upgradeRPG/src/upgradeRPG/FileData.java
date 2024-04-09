@@ -110,7 +110,7 @@ public class FileData {
 		fileWriter.close();
 	}
 
-	public void loadData() throws IOException {
+	public static void loadData() throws IOException {
 		File file = null;
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
