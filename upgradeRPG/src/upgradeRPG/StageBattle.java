@@ -101,10 +101,10 @@ public class StageBattle extends Stage {
 			}
 		}
 		deadPlayer = playerList.size() - num;
-		
+
 		num = 0;
-		for(int i=0; i<monsterList.size(); i++) {
-			if(monsterList.get(i).getHp() <= 0) {
+		for (int i = 0; i < monsterList.size(); i++) {
+			if (monsterList.get(i).getHp() <= 0) {
 				num += 1;
 			}
 		}
@@ -139,8 +139,32 @@ public class StageBattle extends Stage {
 					monsterIndex = 0;
 				}
 			}
+			checkLive();
+			if (deadMonster <= 0 || deadPlayer <= 0) {
+				break;
+			}
 		}
-//		GameManager.nextStage = "LOBBY";
+
+		if (deadPlayer == playerList.size()) {
+			System.err.println("FAILED...🪦");
+			GameManager.nextStage = "LOBBY";
+			return false;
+		}
+		System.out.println("드디어 몬스터들을 모두 해치웠다!");
+		System.out.println("⏩ 보상방으로 이동합니다.");
+
+		System.out.println("👥 두 개의 방 중에 한 곳은 대놓고 수상해보인다..");
+		System.out.println("[1] 평범한 보상방으로 이동한다.");
+		System.out.println("[2] 수상한 보상방으로 이동한다.");
+		System.out.println("[else] 방을 열어보지 않고 돌아간다.");
+		int select = GameManager.scanner.nextInt();
+
+		if (select == 1)
+			GameManager.nextStage = "REWARD";
+		else if (select == 2)
+			GameManager.nextStage = "MYSTERY";
+
+		GameManager.nextStage = "LOBBY";
 		return false;
 	}
 
