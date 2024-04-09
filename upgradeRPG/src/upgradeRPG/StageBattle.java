@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class StageBattle extends Stage {
 	private Random random = new Random();
-	private ArrayList<UnitPlayer> playerList = new ArrayList<>();
+	public static ArrayList<UnitPlayer> playerList = new ArrayList<>();
 	private ArrayList<UnitMonster> monsterList = new ArrayList<>();
 	private UnitManager unitManager = UnitManager.getInstance();
 
@@ -17,11 +17,11 @@ public class StageBattle extends Stage {
 		unitManager.setMonster(5);
 		playerList = null;
 		playerList = unitManager.playerList;
-	    monsterList = null;
-	    monsterList = unitManager.monsterList;
-	    
-	    deadMonster = monsterList.size();
-	    deadPlayer = playerList.size();
+		monsterList = null;
+		monsterList = unitManager.monsterList;
+
+		deadMonster = monsterList.size();
+		deadPlayer = playerList.size();
 	}
 
 	private void printState() {
@@ -49,6 +49,7 @@ public class StageBattle extends Stage {
 		}
 
 		System.out.println(String.format("[%s] [1]기본공격 [2]스킬", player.getName()));
+		System.out.print("👉 ");
 		int select = GameManager.scanner.nextInt();
 
 		if (select == 1) {
@@ -151,7 +152,7 @@ public class StageBattle extends Stage {
 			}
 		}
 
-		if (deadPlayer == playerList.size()) {
+		if (deadPlayer <= 0) {
 			System.err.println("FAILED...🪦");
 			GameManager.nextStage = "LOBBY";
 			return false;
@@ -162,22 +163,32 @@ public class StageBattle extends Stage {
 		System.out.println("👥 두 개의 방 중에 한 곳은 대놓고 수상해보인다..");
 		System.out.println("[1] 평범한 보상방으로 이동한다.");
 		System.out.println("[2] 수상한 보상방으로 이동한다.");
-		System.out.println("[else] 방을 열어보지 않고 돌아간다.");
+		System.out.println("[else] 방을 열어보지 않고 로비로 돌아간다.");
+		System.out.print("👉 ");
 		int select = GameManager.scanner.nextInt();
 
-		if (select == 1)
+		if (select == 1) {
 			GameManager.nextStage = "REWARD";
-		else if (select == 2)
+			return false;
+		} else if (select == 2) {
 			GameManager.nextStage = "MYSTERY";
-
+			return false;
+		}
 		GameManager.nextStage = "LOBBY";
 		return false;
 	}
 
-	// 초기화
 	@Override
 	public void init() {
-	    
+		unitManager.monsterList.clear();
+		unitManager.setMonster(5);
+		playerList = null;
+		playerList = unitManager.playerList;
+		monsterList = null;
+		monsterList = unitManager.monsterList;
+
+		deadMonster = monsterList.size();
+		deadPlayer = playerList.size();
 	}
 
 }
