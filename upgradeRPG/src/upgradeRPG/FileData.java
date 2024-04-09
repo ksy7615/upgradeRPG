@@ -25,6 +25,77 @@ public class FileData {
 		String gameData = "";
 	
 		gameData += UnitPlayer.money + "\r\n" + temp.size() + "\r\n";
+		
+		// 길드원 저장
+		for(int i=0; i<temp.size(); i++) {
+			gameData += temp.get(i).getName();
+			gameData += "/";
+			gameData += temp.get(i).getLevel();
+			gameData += "/";
+			gameData += temp.get(i).getMaxHp();
+			gameData += "/";
+			gameData += temp.get(i).getMaxMp();
+			gameData += "/";
+			gameData += temp.get(i).getPower();
+			gameData += "/";
+			gameData += temp.get(i).getDefence();
+			gameData += "/";
+			gameData += temp.get(i).getExp();
+			gameData += "/";
+			gameData += temp.get(i).isParty();
+			gameData += "\r\n";
+			
+			// 장착하고 있는 아이템 저장
+			if(temp.get(i).weapon == null) {
+				gameData += temp.get(i).weapon;
+			} else {
+				Item item = temp.get(i).weapon;
+				String weaponData = "";
+				weaponData += item.kind;
+				weaponData += ",";
+				weaponData += item.name;
+				weaponData += ",";
+				weaponData += item.effect;
+				weaponData += ",";
+				weaponData += item.price;
+				gameData += weaponData;
+			}
+			gameData += "/";
+			if(temp.get(i).armor == null) {
+				gameData += temp.get(i).armor;
+			} else {
+				Item item = temp.get(i).armor;
+				String armorData = "";
+				armorData += item.kind;
+				armorData += ",";
+				armorData += item.name;
+				armorData += ",";
+				armorData += item.effect;
+				armorData += ",";
+				armorData += item.price;
+				gameData += armorData;
+			}
+			gameData += "/";
+			if(temp.get(i).ring == null) {
+				gameData += temp.get(i).ring;
+			} else {
+				Item item = temp.get(i).ring;
+				String ringData = "";
+				ringData += item.kind;
+				ringData += ",";
+				ringData += item.name;
+				ringData += ",";
+				ringData += item.effect;
+				ringData += ",";
+				ringData += item.price;
+				gameData += ringData;
+			}
+			gameData += "\r\n";
+		}
+		// 아이템 개수 저장
+		gameData += UnitPlayer.getItemSize();
+		gameData += "\r\n";
+		
 	}
 	
 }
