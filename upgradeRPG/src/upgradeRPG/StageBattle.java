@@ -92,6 +92,34 @@ public class StageBattle extends Stage {
 
 	@Override
 	public boolean update() {
+		boolean isRun = true;
+		boolean turn = true;
+		int playerIndex = 0;
+		int monsterIndex = 0;
+
+		while (isRun) {
+			if (turn) {
+				printState();
+				// 플레이어 수만큼 공격 가능
+				if (playerIndex < playerList.size()) {
+					attackForPlayer(playerIndex);
+					playerIndex += 1;
+				} else {
+					turn = !turn;
+					playerIndex = 0;
+				}
+			} else if (!turn) {
+				// 몬스터 수만큼 공격 가능
+				if (monsterIndex < monsterList.size()) {
+					attackForMonster(monsterIndex);
+					monsterIndex += 1;
+				} else {
+					turn = !turn;
+					monsterIndex = 0;
+				}
+			}
+		}
+//		GameManager.nextStage = "LOBBY";
 		return false;
 	}
 
