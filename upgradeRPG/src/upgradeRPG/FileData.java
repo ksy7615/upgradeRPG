@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileData {
-	
+
 	public static void save() throws IOException {
 		// (1) 플레이어 유닛 기본 세팅 저장
 		UnitManager unitManager = UnitManager.getInstance();
-		
+
 		FileWriter fileWriter = null;
 		String path = "gameData.txt";
 		fileWriter = new FileWriter(path);
@@ -109,31 +109,31 @@ public class FileData {
 		fileWriter.write(gameData, 0, gameData.length());
 		fileWriter.close();
 	}
-	
+
 	public void loadData() throws IOException {
 		File file = null;
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
 		String path = "gameData.txt";
-		
+
 		file = new File(path);
-		if(file.exists()) {
+		if (file.exists()) {
 			fileReader = new FileReader(file);
 			bufferedReader = new BufferedReader(fileReader);
-			
+
 			// 돈
 			String money = bufferedReader.readLine();
 			UnitPlayer.money = Integer.parseInt(money);
 			System.out.println(UnitPlayer.money);
-			
+
 			// 길드원 수
 			String guildSize = bufferedReader.readLine();
 			int size = Integer.parseInt(guildSize);
 			UnitPlayer.guild.guildList.clear();
 			System.out.println(size);
-			
-			// 길드원 아이템 가져오기
-			for(int i=0; i<size; i++) {
+
+			// 길드원 가져오기
+			for (int i = 0; i < size; i++) {
 				String unitData = bufferedReader.readLine();
 				String[] unitArray = unitData.split("/");
 				String name = unitArray[0];
@@ -144,11 +144,74 @@ public class FileData {
 				int defence = Integer.parseInt(unitArray[5]);
 				int exp = Integer.parseInt(unitArray[6]);
 				boolean isParty = unitArray[7].equals("true");
-				
+
 				UnitPlayer player = new UnitPlayer(name, level, maxHp, maxMp, power, defence, exp, isParty);
 				UnitPlayer.guild.guildList.add(player);
+
+				// 아이템 가져오기
+				String itemData = bufferedReader.readLine();
+				String[] itemArray = itemData.split("/");
+
+				// >>> 무기
+				if (itemArray[0].equals("null")) {
+					UnitPlayer.guild.guildList.get(i).weapon = null;
+				} else {
+					String[] weapon = itemArray[0].split(",");
+					int itemKind = Integer.parseInt(weapon[0]);
+					String itemName = weapon[1];
+					int itemEffect = Integer.parseInt(weapon[2]);
+					int itemPrice = Integer.parseInt(weapon[3]);
+
+					Item item = new Item(itemKind, itemName, itemEffect, itemPrice);
+					UnitPlayer.guild.guildList.get(i).weapon = item;
+				}
+
+				// >>> 갑옷
+				if (itemArray[1].equals("null")) {
+					UnitPlayer.guild.guildList.get(i).armor = null;
+				} else {
+					String[] armor = itemArray[1].split(",");
+					int itemKind = Integer.parseInt(armor[0]);
+					String itemName = armor[1];
+					int itemEffect = Integer.parseInt(armor[2]);
+					int itemPrice = Integer.parseInt(armor[3]);
+
+					Item item = new Item(itemKind, itemName, itemEffect, itemPrice);
+					UnitPlayer.guild.guildList.get(i).armor = item;
+				}
+
+				// >>> 반지
+				if (itemArray[2].equals("null")) {
+					UnitPlayer.guild.guildList.get(i).ring = null;
+				} else {
+					String[] ring = itemArray[2].split(",");
+					int itemKind = Integer.parseInt(ring[0]);
+					String itemName = ring[1];
+					int itemEffect = Integer.parseInt(ring[2]);
+					int itemPrice = Integer.parseInt(ring[3]);
+
+					Item item = new Item(itemKind, itemName, itemEffect, itemPrice);
+					UnitPlayer.guild.guildList.get(i).ring = item;
+				}
 			}
-			
+			// >>> 인벤토리
+			String invenSize = bufferedReader.readLine();
+			System.out.println(invenSize);
+			int inventorySize = Integer.parseInt(invenSize);
+
+			UnitPlayer.inven.itemList.clear();
+
+			for (int i = 0; i < inventorySize; i++) {
+				String invenData = bufferedReader.readLine();
+				String[] invenArray = invenData.split("/");
+				int itemKind = Integer.parseInt(invenArray[0]);
+				String itemName = invenArray[1];
+				int itemEffect = Integer.parseInt(invenArray[2]);
+				int itemPrice = Integer.parseInt(invenArray[3]);
+
+				Item item = new Item(itemKind, itemName, itemEffect, itemPrice);
+				UnitPlayer.inven.itemList.add(item);
+			}
 		} else {
 			System.err.println("불러올 파일이 존재하지 않습니다.");
 			return;
