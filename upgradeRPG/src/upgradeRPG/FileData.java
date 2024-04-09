@@ -104,8 +104,6 @@ public class FileData {
 			gameData += item.price;
 			gameData += "\r\n";
 		}
-		System.out.println(gameData);
-
 		fileWriter.write(gameData, 0, gameData.length());
 		fileWriter.close();
 	}
