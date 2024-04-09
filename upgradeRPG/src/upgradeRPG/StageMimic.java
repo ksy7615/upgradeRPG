@@ -35,7 +35,7 @@ public class StageMimic extends Stage {
 			return;
 		}
 		System.out.println(String.format("[%s] [1]기본공격 [2]스킬", players.getName()));
-		System.out.println("👉 ");
+		System.out.print("👉 ");
 		int select = GameManager.scanner.nextInt();
 
 		if (select == 1) {
@@ -70,14 +70,10 @@ public class StageMimic extends Stage {
 		if (mimic.getHp() <= 0) {
 			return;
 		}
+		int idx = random.nextInt(player.size());
 
-		while (true) {
-			int idx = random.nextInt(player.size());
-
-			if (player.get(idx).getHp() > 0) {
-				mimic.defaultAttack(player.get(idx));
-				break;
-			}
+		if (player.get(idx).getHp() > 0) {
+			mimic.defaultAttack(player.get(idx));
 		}
 	}
 
@@ -102,12 +98,16 @@ public class StageMimic extends Stage {
 				}
 			} else if (!turn) {
 				attackForMonster();
+				turn = !turn;
 			}
 
 			if (mimic.getHp() <= 0 || deadPlayer <= 0) {
 				break;
 			}
 		}
+		if (mimic.getHp() <= 0)
+			System.out.println("다음부턴 상자를 열 때 주의하도록 하자...");
+		
 		GameManager.nextStage = "LOBBY";
 		return false;
 	}
