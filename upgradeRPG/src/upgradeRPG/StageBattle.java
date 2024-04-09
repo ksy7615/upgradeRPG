@@ -29,7 +29,7 @@ public class StageBattle extends Stage {
 		for (int i = 0; i < playerList.size(); i++) {
 			System.out.println(String.format("Player 직업 '%s'", playerList.get(i).getName()));
 			System.out.println(String.format("❤️ HP [%d/%d]", playerList.get(i).getHp(), playerList.get(i).getMaxHp()));
-			System.out.println(String.format("💧 MP [%d/%d]", playerList.get(i).getMp(), playerList.get(i).getMaxHp()));
+			System.out.println(String.format("💧 MP [%d/%d]", playerList.get(i).getMp(), playerList.get(i).getMaxMp()));
 			if (i < playerList.size() - 1)
 				System.out.println("〰〰〰〰〰〰〰〰〰〰〰〰");
 		}
