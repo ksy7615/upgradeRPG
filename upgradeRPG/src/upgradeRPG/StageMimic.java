@@ -65,7 +65,7 @@ public class StageMimic extends Stage {
 			}
 		}
 	}
-	
+
 	private void attackForMonster() {
 		if (mimic.getHp() <= 0) {
 			return;
@@ -83,6 +83,32 @@ public class StageMimic extends Stage {
 
 	@Override
 	public boolean update() {
+		System.out.println("미믹이었다 ‼‼‼‼");
+
+		boolean isRun = true;
+		boolean turn = true;
+		int playerIndex = 0;
+
+		while (isRun) {
+			if (turn) {
+				printState();
+				// 플레이어 수만큼 공격 가능
+				if (playerIndex < player.size()) {
+					attackForPlayer(playerIndex);
+					playerIndex += 1;
+				} else {
+					turn = !turn;
+					playerIndex = 0;
+				}
+			} else if (!turn) {
+				attackForMonster();
+			}
+
+			if (mimic.getHp() <= 0 || deadPlayer <= 0) {
+				break;
+			}
+		}
+		GameManager.nextStage = "LOBBY";
 		return false;
 	}
 
