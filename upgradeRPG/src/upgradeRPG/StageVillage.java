@@ -18,7 +18,7 @@ public class StageVillage extends Stage {
 			System.out.println("╚══════════════════════╝");
 
 			System.out.print("👉 ");
-			int select = GameManager.scanner.nextInt();
+			int select = GameManager.inputNumber();
 
 			if (select == 1) {
 				unitManager.player.guild.setGuild();
