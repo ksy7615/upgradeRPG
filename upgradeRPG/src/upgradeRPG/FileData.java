@@ -9,16 +9,15 @@ import java.util.ArrayList;
 
 public class FileData {
 	File file = null;
-	FileWriter fileWriter = null;
 	FileReader fileReader = null;
 	BufferedReader bufferedReader = null;
 
-	String path = "gameData.txt";
-
-	public void save() throws IOException {
+	public static void save() throws IOException {
 		// (1) 플레이어 유닛 기본 세팅 저장
 		UnitManager unitManager = UnitManager.getInstance();
-
+		
+		FileWriter fileWriter = null;
+		String path = "gameData.txt";
 		fileWriter = new FileWriter(path);
 		ArrayList<UnitPlayer> temp = unitManager.player.guild.guildList;
 
@@ -95,7 +94,7 @@ public class FileData {
 		// 아이템 개수 저장
 		gameData += UnitPlayer.getItemSize();
 		gameData += "\r\n";
-		
+
 		// 아이템 저장
 		for (int i = 0; i < UnitPlayer.getItemSize(); i++) {
 			Item item = UnitPlayer.inven.itemList.get(i);
@@ -109,7 +108,7 @@ public class FileData {
 			gameData += "\r\n";
 		}
 		System.out.println(gameData);
-		
+
 		fileWriter.write(gameData, 0, gameData.length());
 		fileWriter.close();
 	}
