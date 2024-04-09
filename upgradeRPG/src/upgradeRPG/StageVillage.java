@@ -31,12 +31,14 @@ public class StageVillage extends Stage {
 			} else if (select == 4) {
 				try {
 					FileData.save();
+					System.out.println("파일저장 성공");
 				} catch (Exception e) {
 					System.err.println("파일저장 실패");
 				}
 			} else if (select == 5) {
 				try {
 					FileData.loadData();
+					System.out.println("파일로드 성공");
 				} catch (Exception e) {
 					System.err.println("파일로드 실패");
 				}
